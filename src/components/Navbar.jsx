@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import NewUserForm from './NewUserForm'
 
-function Navbar({increase, decrease, deleteUser}) {
+function Navbar({increase, decrease, deleteUser, toggleEditForm}) {
 
     const [formDisplay, setFormDisplay] = useState(false)
 
@@ -13,7 +13,7 @@ function Navbar({increase, decrease, deleteUser}) {
         <div>
             <button onClick={decrease}>Previous</button>
             <div>
-                <button>Edit</button>
+                <button onClick={toggleEditForm}>Edit</button>
                 <button onClick={deleteUser}>Delete</button>
                 <button onClick={toggleForm}>New</button>
             </div>

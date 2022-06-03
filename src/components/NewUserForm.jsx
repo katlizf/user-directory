@@ -12,7 +12,7 @@ function NewUserForm({toggleForm}) {
     const [movieTitle1, setMovieTitle1] = useState('')
     const [movieTitle2, setMovieTitle2] = useState('')
     const [movieTitle3, setMovieTitle3] = useState('')
-    const [users, setUsers] = useState(data)
+    // const [users, setUsers] = useState(data)
 
     const update = e => {
         switch(e.target.name) {
@@ -48,8 +48,7 @@ function NewUserForm({toggleForm}) {
         }
     }
 
-    const addUser = () => {
-        alert ("You've been added!")
+    const addUser = () => {        
         data.push({
             id: data.length+1,
             name: {
@@ -62,6 +61,7 @@ function NewUserForm({toggleForm}) {
             jobTitle,
             favoriteMovies: [movieTitle1, movieTitle2, movieTitle3]
         }) 
+        alert ("You've been added!")
         // setUsers(prevState => {
         //     return prevState(users)
         //   })

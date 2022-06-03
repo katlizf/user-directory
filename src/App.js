@@ -3,6 +3,7 @@ import UserCard from './components/UserCard'
 import Navbar from './components/Navbar'
 import React, {useState, useEffect} from 'react'
 import data from './data'
+import EditUser from './components/EditUser'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     const [index, setIndex] = useState(0)
     const [users, setUsers] = useState(data)
     const [person, setPerson] = useState(users[index])
+    const [cardEdit, setCardEdit] = useState(false)
     let length = users.length
 
     useEffect(() => {
@@ -36,7 +38,18 @@ function App() {
         setUsers(prevState => {
           return prevState.filter(user => user !== users[index])
         })
-      }
+    }
+
+    const toggleEditForm = e => {
+        setCardEdit(cardEdit => !cardEdit)
+    }
+
+    const renderEdit = () => {
+        setUsers(prevState => {
+            return prevState.filter(user => user !== cardEdit
+        )}
+    )}
+
 
     return (
         <div className="App">
@@ -45,8 +58,10 @@ function App() {
                 <Navbar 
                     increase={increaseIndex}
                     decrease={decreaseIndex}
-                    deleteUser={deleteUser}/>
+                    deleteUser={deleteUser}
+                    toggleEditForm={toggleEditForm}/>
             </div>
+            {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit}/>}
         </div>
     )
 }

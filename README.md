@@ -9,4 +9,3 @@ Can scroll through cards displaying information for each user in the data array,
 * Either Tailwind or MUI for styling?
 
 Work in progress
-# user-directory
