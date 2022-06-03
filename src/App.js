@@ -40,11 +40,13 @@ function App() {
 
     return (
         <div className="App">
-            <UserCard data={person} length={length} index={index+1}/>
-            <Navbar 
-                increase={increaseIndex}
-                decrease={decreaseIndex}
-                deleteUser={deleteUser}/>
+            <div>
+                <UserCard data={person} length={length} index={index+1}/>
+                <Navbar 
+                    increase={increaseIndex}
+                    decrease={decreaseIndex}
+                    deleteUser={deleteUser}/>
+            </div>
         </div>
     )
 }
