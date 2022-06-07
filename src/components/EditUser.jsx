@@ -62,7 +62,7 @@ function EditUser({toggleEditForm, users, data, index, renderEdit}) {
     }
 
     return (
-        <div>
+        <div className='bg-slate-200'>
             <h2>Edit Information Below</h2>
                 <div>
                     <h3>Name:</h3>
@@ -121,8 +121,8 @@ function EditUser({toggleEditForm, users, data, index, renderEdit}) {
                         name='movieTitle3'
                         placeholder={movieTitle3}></input>
                 </div>  
-                <button onClick={toggleEditForm}>Cancel</button>
-                <button onClick={() => {toggleEditForm(); saveChanges(); renderEdit()}}>Save Changes</button>
+                <button className='text-white bg-blue-500 rounded-md w-16' onClick={toggleEditForm}>Cancel</button>
+                <button className='text-white bg-blue-500 rounded-md w-32' onClick={() => {toggleEditForm(); saveChanges(); renderEdit()}}>Save Changes</button>
                 
         </div>
     )

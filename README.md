@@ -6,6 +6,8 @@ Can scroll through cards displaying information for each user in the data array,
 
 * React (practicing useState and passing props)
 
-* Either Tailwind or MUI for styling?
+* Formik used for forms
+
+* Tailwindcss for styling
 
 Work in progress

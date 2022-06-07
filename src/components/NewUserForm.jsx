@@ -68,7 +68,7 @@ function NewUserForm({toggleForm}) {
     }
 
     return (
-        <div>
+        <div className='flex justify-center items-center bg-slate-200 flex-col'>
             <form>
                 <h3>Add yourself as a User!</h3>
                 <input 
@@ -117,8 +117,8 @@ function NewUserForm({toggleForm}) {
                     placeholder='Movie Title'
                     name='movieTitle3'
                     onChange={e => setMovieTitle3(e.target.value)}></input>
-                <button onClick={() => {toggleForm(); addUser()}}>Add</button>
-                <button onClick={toggleForm}>Cancel</button> 
+                <button className='text-white bg-blue-500 rounded-md w-11' onClick={() => {toggleForm(); addUser()}}>Add</button>
+                <button className='text-white bg-blue-500 rounded-md w-16' onClick={toggleForm}>Cancel</button> 
             </form>
         </div>
     )
