@@ -1,10 +1,11 @@
 import './App.css'
 import UserCard from './components/UserCard'
 import Navbar from './components/Navbar'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import data from './data'
 import EditUser from './components/EditUser'
 
+const GlobalContext = createContext()
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
 
 
     return (
+        <GlobalContext.Provider value={{setUsers}}>
         <div >
             <h1 className='flex justify-start bg-blue-500 h-16 pl-8 pt-4 text-lg font-semibold'>Home</h1>
             <div className='bg-slate-800 w-screen h-screen flex justify-center items-center'>
@@ -68,7 +70,9 @@ function App() {
                 </div>
                 {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit} />}</div>
         </div>
+        </GlobalContext.Provider>
     )
 }
 
 export default App
+export {GlobalContext}
