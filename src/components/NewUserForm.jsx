@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
+import {useFormik} from 'formik'
 import data from '../data'
+import {useEffect} from 'react'
 
 function NewUserForm({toggleForm}) {
 
@@ -48,7 +50,34 @@ function NewUserForm({toggleForm}) {
         }
     }
 
-    const addUser = () => {        
+    // const addUser = () => {        
+    //     data.push({
+    //         id: data.length+1,
+    //         name: {
+    //             first,
+    //             last
+    //         },
+    //         city,
+    //         country,
+    //         employer,
+    //         jobTitle,
+    //         favoriteMovies: [movieTitle1, movieTitle2, movieTitle3]
+    //     }) 
+    //     alert ("You've been added!")
+    //     // setUsers(prevState => {
+    //     //     return prevState(users)
+    //     //   })
+    // }
+
+    const [values, setValues] = useState({})
+
+    // const handleChange = evt => {
+    //     setValues(() => {
+    //         [evt.target.first]: evt.target.value
+    //     })
+    // }
+
+    useEffect(() => {
         data.push({
             id: data.length+1,
             name: {
@@ -65,59 +94,94 @@ function NewUserForm({toggleForm}) {
         // setUsers(prevState => {
         //     return prevState(users)
         //   })
-    }
+    })
+
+    const formik = useFormik({
+        initialValues: {
+            first: '',
+            last: '',
+            city: '',
+            country: '',
+            employer: '',
+            jobTitle: '',
+            movieTitle1: '',
+            movieTitle2: '',
+            movieTitle3:''
+        }, 
+        onSubmit: values => {
+            console.log(values)
+        }
+    })
 
     return (
         <div className='flex justify-center items-center bg-slate-200 flex-col'>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <h3>Add yourself as a User!</h3>
                 <input 
+                    name='first'
                     type='text'
                     placeholder='First Name'
-                    name='first'
-                    onChange={update}></input> 
+                    value={formik.values.first}
+                    // onChange={update}
+                    onChange={formik.handleChange}></input> 
                 <input 
+                    name='last'
                     type='text'
                     placeholder='Last Name'
-                    name='last'
-                    onChange={update}></input> 
+                    value={formik.values.last}                    
+                    // onChange={update}
+                    onChange={formik.handleChange}></input> 
                 <input
+                    name='city'
                     type='text'
                     placeholder='City'
-                    name='city'
-                    onChange={update}></input>
+                    value={formik.values.city}                    
+                    // onChange={update}
+                    onChange={formik.handleChange}></input>
                 <input
-                    type='text'
-                    placeholder='Country'
                     name='country'
-                    onChange={update}></input>
-                <input
                     type='text'
-                    placeholder='Job Title'
+                    placeholder='Country' 
+                    value={formik.values.country}                   
+                    // onChange={update}
+                    onChange={formik.handleChange}></input>
+                <input
                     name='jobTitle'
-                    onChange={update}></input> 
-                <input
                     type='text'
-                    placeholder='Employer Name'
+                    placeholder='Job Title'  
+                    value={formik.values.jobTitle}                  
+                    // onChange={update}
+                    onChange={formik.handleChange}></input> 
+                <input
                     name='employer'
-                    onChange={update}></input> 
+                    type='text'
+                    placeholder='Employer Name' 
+                    value={formik.values.employer}                   
+                    // onChange={update}
+                    onChange={formik.handleChange}></input> 
                 <label>What are you're favorite movies?</label>
                 <input
-                    type='text'
-                    placeholder='Movie Title'
                     name='movieTitle1'
-                    onChange={e => setMovieTitle1(e.target.value)}></input> 
-                <input
                     type='text'
                     placeholder='Movie Title'
+                    value={formik.values.movieTitle1}                    
+                    // onChange={e => setMovieTitle1(e.target.value)}
+                    onChange={formik.handleChange}></input> 
+                <input
                     name='movieTitle2'
-                    onChange={e => setMovieTitle2(e.target.value)}></input> 
-                <input
                     type='text'
-                    placeholder='Movie Title'
+                    placeholder='Movie Title' 
+                    value={formik.values.movieTitle2}                   
+                    // onChange={e => setMovieTitle2(e.target.value)}
+                    onChange={formik.handleChange}></input> 
+                <input
                     name='movieTitle3'
-                    onChange={e => setMovieTitle3(e.target.value)}></input>
-                <button className='text-white bg-blue-500 rounded-md w-11' onClick={() => {toggleForm(); addUser()}}>Add</button>
+                    type='text'
+                    placeholder='Movie Title'  
+                    value={formik.values.movieTitle3}                  
+                    // onChange={e => setMovieTitle3(e.target.value)}
+                    onChange={formik.handleChange}></input>
+                <button type='submit' className='text-white bg-blue-500 rounded-md w-11' onClick={() => {toggleForm()}}>Add</button>
                 <button className='text-white bg-blue-500 rounded-md w-16' onClick={toggleForm}>Cancel</button> 
             </form>
         </div>
