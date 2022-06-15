@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .btn-large {
+        @apply text-white bg-blue-500 rounded-md w-16;
+    }
+    .btn-small {
+        @apply text-white bg-blue-500 rounded-md w-11;
+    }
+    .btn-xl {
+        @apply text-white bg-blue-500 rounded-md w-32;
+    }
+    .form {
+        @apply flex justify-center items-center bg-slate-200 flex-col h-3/5 w-96;
+    }
+    .form-header {
+        @apply text-2xl flex place-content-center;
+    }
+    .multiple-fields {
+        @apply flex flex-col;
+    }
+    .input {
+        @apply w-80 border-b-2 overflow-ellipsis;
+    }
+    .form-btns {
+        @apply space-x-4 flex justify-center pt-3;
+    }
+}

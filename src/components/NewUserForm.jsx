@@ -26,78 +26,97 @@ function NewUserForm({toggleForm}) {
                 let newState = [...prevState, values]
                 return newState
             })
-            console.log('Form data', values)
             toggleForm()
-            alert ("You've been added!")
+            alert("You've been added!")
             renderEdit()
-            
+
         }
     })
 
 
     return (
-        <div className='flex justify-center items-center bg-slate-200 flex-col'>
+        <div className='form'>
             <form onSubmit={formik.handleSubmit}>
-                <h3>Add yourself as a User!</h3>
-                <input
-                    name='first'
-                    type='text'
-                    placeholder='First Name'
-                    value={formik.values.first}
-                    onChange={formik.handleChange}></input>
-                <input
-                    name='last'
-                    type='text'
-                    placeholder='Last Name'
-                    value={formik.values.last}
-                    onChange={formik.handleChange}></input>
-                <input
-                    name='city'
-                    type='text'
-                    placeholder='City'
-                    value={formik.values.city}
-                    onChange={formik.handleChange}></input>
-                <input
-                    name='country'
-                    type='text'
-                    placeholder='Country'
-                    value={formik.values.country}
-                    onChange={formik.handleChange}></input>
-                <input
-                    name='jobTitle'
-                    type='text'
-                    placeholder='Job Title'
-                    value={formik.values.jobTitle}
-                    onChange={formik.handleChange}></input>
-                <input
-                    name='employer'
-                    type='text'
-                    placeholder='Employer Name'
-                    value={formik.values.employer}
-                    onChange={formik.handleChange}></input>
-                <label>What are you're favorite movies?</label>
+                <h2 className='form-header'>Add yourself as a User!</h2>
+                <div className='multiple-fields'>
+                    <h3>Name:</h3>
+                    <input
+                        name='first'
+                        type='text'
+                        className='input'
+                        placeholder='First Name'
+                        value={formik.values.first}
+                        onChange={formik.handleChange}></input>
+                    <input
+                        name='last'
+                        type='text'
+                        className='input'
+                        placeholder='Last Name'
+                        value={formik.values.last}
+                        onChange={formik.handleChange}></input>
+                </div>
+                <div className='multiple-fields'>
+                    <h3>Location:</h3>
+                    <input
+                        name='city'
+                        type='text'
+                        className='input'
+                        placeholder='City'
+                        value={formik.values.city}
+                        onChange={formik.handleChange}></input>
+                    <input
+                        name='country'
+                        type='text'
+                        className='input'
+                        placeholder='Country'
+                        value={formik.values.country}
+                        onChange={formik.handleChange}></input>
+                </div>
+                <div className='multiple-fields' >
+                    <h3>Job Information:</h3>
+                    <input
+                        name='jobTitle'
+                        type='text'
+                        className='input'
+                        placeholder='Job Title'
+                        value={formik.values.jobTitle}
+                        onChange={formik.handleChange}></input>
+                    <input
+                        name='employer'
+                        type='text'
+                        className='input'
+                        placeholder='Employer Name'
+                        value={formik.values.employer}
+                        onChange={formik.handleChange}></input>
+                </div >
+                <h3>What are your favorite movies?</h3>
                 <input
                     name='movieTitle1'
                     type='text'
+                    className='input'
                     placeholder='Movie Title'
                     value={formik.values.movieTitle1}
                     onChange={formik.handleChange}></input>
                 <input
                     name='movieTitle2'
                     type='text'
+                    className='input'
                     placeholder='Movie Title'
                     value={formik.values.movieTitle2}
                     onChange={formik.handleChange}></input>
                 <input
                     name='movieTitle3'
                     type='text'
+                    className='input'
                     placeholder='Movie Title'
                     value={formik.values.movieTitle3}
                     onChange={formik.handleChange}></input>
-                <button type='submit' className='text-white bg-blue-500 rounded-md w-11'>Add</button>
-                <button className='text-white bg-blue-500 rounded-md w-16' onClick={toggleForm}>Cancel</button>
-            </form>
-        </div>
+                <div className='form-btns'>
+                    <button className='btn-large' onClick={toggleForm}>Cancel</button>
+                    <button type='submit' className='btn-xl'>Add New User</button>
+                </div>
+            </form >
+        </div >
     )
 }
 
