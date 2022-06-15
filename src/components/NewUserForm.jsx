@@ -37,7 +37,7 @@ function NewUserForm({toggleForm}) {
 
     return (
         <div className='form'>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={formik.handleSubmit} className='flex flex-col justify-centerr'>
                 <h2 className='form-header'>Add A New User</h2>
                 <div className='multiple-fields'>
                     <h3>Name:</h3>

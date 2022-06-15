@@ -65,7 +65,7 @@ function App() {
         <GlobalContext.Provider value={{setUsers}}>
         <div className='bg-slate-800'>
             <h1 className='flex justify-start bg-blue-500 h-16 pl-8 pt-4 text-lg font-semibold'>Home</h1>
-            <div className='bg-slate-800 h-screen flex justify-center items-center '>
+            <div className='bg-slate-800 h-screen flex justify-center items-center'>
                 <div className='w-6/12 h-3/6 pr-12'>
                     <UserCard data={person} length={length} index={index + 1} />
                     <Navbar
@@ -76,7 +76,7 @@ function App() {
                         toggleForm={toggleForm}
                     />
                 </div>
-                {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit} />}
+                {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit}/>}
 
                 {formDisplay && <NewUserForm toggleForm={toggleForm}/>}
             </div>
