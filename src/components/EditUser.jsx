@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {GlobalContext} from '../App'
 import {useFormik} from 'formik'
 
+
 function EditUser({toggleEditForm, users, data, index, renderEdit}) {
 
     const {setPerson} = useContext(GlobalContext)
@@ -35,7 +36,7 @@ function EditUser({toggleEditForm, users, data, index, renderEdit}) {
     return (
         <div className='form'>
             <form onSubmit={formik.handleSubmit}>
-                <h2 className='form-header'>Edit Information Below</h2>
+                <h2 className='form-header'>Update This User Below</h2>
                 <div className='multiple-fields'>
                     <h3>Name:</h3>
                     <input

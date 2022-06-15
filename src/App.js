@@ -4,8 +4,10 @@ import Navbar from './components/Navbar'
 import React, { useState, useEffect, createContext } from 'react'
 import data from './data'
 import EditUser from './components/EditUser'
+import NewUserForm from './components/NewUserForm'
 
 const GlobalContext = createContext()
+
 
 function App() {
 
@@ -13,6 +15,7 @@ function App() {
     const [users, setUsers] = useState(data)
     const [person, setPerson] = useState(users[index])
     const [cardEdit, setCardEdit] = useState(false)
+    const [formDisplay, setFormDisplay] = useState(false)
     let length = users.length
 
     useEffect(() => {
@@ -45,6 +48,10 @@ function App() {
         setCardEdit(cardEdit => !cardEdit)
     }
 
+    const toggleForm = e => {
+        setFormDisplay(formDisplay => !formDisplay)
+    }
+
     const renderEdit = () => {
         setUsers(prevState => {
             return prevState.filter(user => user !== cardEdit
@@ -56,19 +63,23 @@ function App() {
 
     return (
         <GlobalContext.Provider value={{setUsers}}>
-        <div >
+        <div className='bg-slate-800'>
             <h1 className='flex justify-start bg-blue-500 h-16 pl-8 pt-4 text-lg font-semibold'>Home</h1>
-            <div className='bg-slate-800 w-screen h-screen flex justify-center items-center'>
-                <div className='w-9/12 h-3/6'>
+            <div className='bg-slate-800 h-screen flex justify-center items-center '>
+                <div className='w-6/12 h-3/6 pr-12'>
                     <UserCard data={person} length={length} index={index + 1} />
                     <Navbar
                         increase={increaseIndex}
                         decrease={decreaseIndex}
                         deleteUser={deleteUser}
                         toggleEditForm={toggleEditForm}
+                        toggleForm={toggleForm}
                     />
                 </div>
-                {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit} />}</div>
+                {cardEdit && <EditUser data={person} toggleEditForm={toggleEditForm} users={users} index={index} renderEdit={renderEdit} />}
+
+                {formDisplay && <NewUserForm toggleForm={toggleForm}/>}
+            </div>
         </div>
         </GlobalContext.Provider>
     )

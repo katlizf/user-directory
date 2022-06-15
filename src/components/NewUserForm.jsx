@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {useFormik} from 'formik'
 import {GlobalContext} from '../App'
 
+
 function NewUserForm({toggleForm}) {
 
     const {setUsers} = useContext(GlobalContext)
@@ -37,7 +38,7 @@ function NewUserForm({toggleForm}) {
     return (
         <div className='form'>
             <form onSubmit={formik.handleSubmit}>
-                <h2 className='form-header'>Add yourself as a User!</h2>
+                <h2 className='form-header'>Add A New User</h2>
                 <div className='multiple-fields'>
                     <h3>Name:</h3>
                     <input
